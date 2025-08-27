@@ -26,7 +26,14 @@ function call(callId, titleId, numId){
         event.preventDefault();
         const titleN = document.getElementById(titleId).innerText;
         const numN = document.getElementById(numId).innerText;
-        alert("Calling " + titleN + '  ' + numN + "...")
+        if(parseInt(document.getElementById('coin_count').innerText)>0){
+            const coinLeft = parseInt(document.getElementById('coin_count').innerText);
+            const calculate = coinLeft - 20;
+            const coinRemaining = document.getElementById('coin_count').innerText = calculate;
+            alert("📞 Calling " + titleN + '  ' + numN + "...");
+        }else{
+            alert("❌ You don't have enough coins; you need at least 20 coins for each call")
+        }
     })
 }
 
