@@ -22,12 +22,6 @@ const h9 = count('heart9');
 
 const call_history = [];
 
-//const data = {
-   // name : 'Fire Service Number',
-    //title : 'Help',
-    //date new Date().toLocaleDateString(): 
-//}
-
 //Function for getting calls loop
 function printCalls (){
     const blank = document.getElementById('historyPanel');
@@ -87,3 +81,8 @@ const do6 = call('call6', 'title6', 'num6');
 const do7 = call('call7', 'title7', 'num7');
 const do8 = call('call8', 'title8', 'num8');
 const do9 = call('call9', 'title9', 'num9');
+
+//Clearing history
+document.getElementById("clear_btn").addEventListener('click', function(event){
+    document.getElementById("historyPanel").innerHTML = "";
+})
