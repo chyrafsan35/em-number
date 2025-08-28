@@ -3,11 +3,11 @@ console.log("hi")
 //Common function for clicking 'heart'
 function count(idName){
     document.getElementById(idName).addEventListener('click', function(event){
-    event.preventDefault();
-    const storeHeart = parseInt(document.getElementById('heart_count').innerText);
-    const sum = storeHeart + 1;
-    document.getElementById('heart_count').innerText = sum;
-})
+        event.preventDefault();
+        const storeHeart = parseInt(document.getElementById('heart_count').innerText);
+        const sum = storeHeart + 1;
+        document.getElementById('heart_count').innerText = sum;
+    })
 }
 
 const h1 = count('heart');
@@ -86,3 +86,26 @@ const do9 = call('call9', 'title9', 'num9');
 document.getElementById("clear_btn").addEventListener('click', function(event){
     document.getElementById("historyPanel").innerHTML = "";
 })
+
+//Copying Number
+document.body.addEventListener('click', function(event){
+    if(event.target.classList.contains(".copyBtn")){
+        const get_number = document.querySelectorAll(".getNumber").innerText;
+        navigator.clipboard.writeText(get_number);
+        alert("Copied Number " + get_number);
+    }
+})
+
+document.querySelectorAll(".copyBtn").forEach(btn => {
+  btn.addEventListener("click", function(event){;
+    const parentID = btn.closest('.paRentId');
+    const result = parentID.querySelector('.getNumber');
+    const get_number = result.innerText.trim();
+    navigator.clipboard.writeText(get_number);
+    alert("Copied Number " + get_number);
+
+    //copy_increase
+    const copyCount = parseInt(document.getElementById('copy_count').innerText);
+    const sum2 = copyCount + 1;
+    document.getElementById('copy_count').innerText = sum2; 
+})})
