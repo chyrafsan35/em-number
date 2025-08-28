@@ -20,6 +20,35 @@ const h7 = count('heart7');
 const h8 = count('heart8');
 const h9 = count('heart9');
 
+const call_history = [];
+
+//const data = {
+   // name : 'Fire Service Number',
+    //title : 'Help',
+    //date new Date().toLocaleDateString(): 
+//}
+
+//Function for getting calls loop
+function printCalls (){
+    const blank = document.getElementById('historyPanel');
+    blank.innerHTML = "";
+
+    for(const database of call_history){
+        const newHistory = document.createElement('div');
+        newHistory.className = 'flex justify-between items-center bg-[#FAFAFA] rounded-[3px] p-3 m-3';
+        newHistory.innerHTML = 
+        `
+            <div>
+                <h4 class="font-bold">${database.name}</h4>
+                <span class="text-[#5C5C5C]">${database.number}</span>
+            </div>
+            <div class="text-[#5C5C5C]">${database.time}</div>
+        `;
+
+        blank.appendChild(newHistory);
+    }
+}
+
 //Common function for calling..
 function call(callId, titleId, numId){
     document.getElementById(callId).addEventListener('click', function(event){
@@ -31,6 +60,18 @@ function call(callId, titleId, numId){
             const calculate = coinLeft - 20;
             const coinRemaining = document.getElementById('coin_count').innerText = calculate;
             alert("📞 Calling " + titleN + '  ' + numN + "...");
+
+            //code for call history
+            const call_name = document.getElementById(titleId).innerText;
+            const call_number = document.getElementById(numId).innerText;
+            
+            call_history.push({
+                name : call_name,
+                number : call_number,
+                time : new Date().toLocaleTimeString()
+            })
+
+            printCalls();
         }else{
             alert("❌ You don't have enough coins; you need at least 20 coins for each call")
         }
